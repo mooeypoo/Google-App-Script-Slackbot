@@ -5,7 +5,7 @@ function doPost(request) {
    var commands = ['/abbrev', '/fun']
 
    if (Object.keys(env.SLACK_TOKENS).indexOf(params.token[0]) === -1) {
-      return respond({ response_type: 'in_channel', text: 'Invalid token.' })
+      return respond({ response_type: 'ephemeral', text: 'Invalid token.' })
    }
 
    // May have other commands later
