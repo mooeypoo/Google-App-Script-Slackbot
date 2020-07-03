@@ -2,7 +2,6 @@ function doPost(request) {
    var urls = env.spreadsheets;
    var slackTokens = env.SLACK_TOKENS;
    var params = request.parameters;
-   var commands = ['/abbrev', '/fun']
 
    if (Object.keys(env.SLACK_TOKENS).indexOf(params.token[0]) === -1) {
       return respond({ response_type: 'ephemeral', text: 'Invalid token.' })
@@ -38,7 +37,7 @@ function doPost(request) {
       var response = 'According to <' + urls.abbrev + '|my database>, *' + commandParameter + '* means ' + results.join(' or ')
 
       return respond({ 'response_type': 'in_channel', text: response })
-   } else if (params.command[0] === '/fun') {
+   } else if (params.command[0] === '/quaranteam') {
       var rows = getSheetRows(urls.fun, 'C2') // Note: Starting from "official title" column
       // Official title - 0
       // fun title - 1
