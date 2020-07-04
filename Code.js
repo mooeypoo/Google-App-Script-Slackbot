@@ -32,7 +32,12 @@ function doPost(request) {
 
       var results = [];
       rows.forEach(function (row) {
-         results.push('*' + row[1] + '*'); // Add bold
+         var term = row[1]
+         if (row[2]) {
+            // There's a URL
+            term = '<' + row[2] + '|' + row[1] + '>'
+         }
+         results.push('*' + term + '*'); // Add bold
       });
       var response = 'According to <' + urls.abbrev + '|my database>, *' + commandParameter + '* means ' + results.join(' or ')
 
