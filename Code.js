@@ -38,7 +38,7 @@ function doPost(request) {
             term = '<' + row[2] + '|' + row[1] + '>'
          }
          // Replace * inside the term so that they don't get confused with bold in Slack
-         term = term.replace(/\*+/g, ':no_entry_sign:')
+         term = term.replace(/\*/g, '✱')
          results.push('*' + term + '*'); // Add bold
       });
       var response = 'According to <' + urls.abbrev + '|my database>, *' + commandParameter + '* means ' + results.join(' or ')
